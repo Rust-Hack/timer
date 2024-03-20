@@ -1,11 +1,18 @@
 const startButton = document.getElementById('start');
 const timerNumbers = document.getElementById('numbers');
+const buttons = document.getElementById('buttons');
 
 let miliSeconds = '00';
 let seconds = '00';
 let minutes = '00';
 let hours = '00';
 let intervalId;
+
+let buttonReset;
+let buttonSave;
+let buttonClear;
+let buttonReverse;
+let buttonclearAll;
 
 const updateTimerDisplay = () => {
     timerNumbers.innerHTML = hours + ':' + minutes + ':' + seconds + ':' + miliSeconds;
@@ -28,6 +35,34 @@ startButton.addEventListener('click', () => {
     } else {
         startButton.style.backgroundColor = 'rgb(99, 255, 60)';
         startButton.innerHTML = 'Start';
+        if(buttons.children.length === 1){
+            buttonReset = document.createElement('button');
+            buttonReset.innerHTML = 'Reset';
+            buttonReset.className = 'buttonsForControl';
+
+            buttonSave = document.createElement('button');
+            buttonSave.innerHTML = 'Save';
+            buttonSave.className = 'buttonsForControl';
+
+            buttonClear = document.createElement('button');
+            buttonClear.innerHTML = 'Clear';
+            buttonClear.className = 'buttonsForControl';
+
+            buttonReverse = document.createElement('button');
+            buttonReverse.innerHTML = 'Reverse';
+            buttonReverse.className = 'buttonsForControl';
+
+            buttonclearAll = document.createElement('button');
+            buttonclearAll.innerHTML = 'Clear All';
+            buttonclearAll.className = 'buttonsForControl';
+
+            buttons.append(buttonReset);
+            buttons.append(buttonSave);
+            buttons.append(buttonClear);
+            buttons.append(buttonReverse);
+            buttons.append(buttonclearAll);
+        }
+
         clearInterval(intervalId);
 
         const timerData = {
@@ -66,3 +101,7 @@ const startMilliseconds = () => {
     seconds = (seconds < 10 ? '0' : '') + seconds;
     updateTimerDisplay();
 };
+
+buttonReset.onclick = () => {
+    console.log(123);
+}
