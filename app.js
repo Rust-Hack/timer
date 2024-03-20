@@ -36,31 +36,22 @@ startButton.addEventListener('click', () => {
         startButton.style.backgroundColor = 'rgb(99, 255, 60)';
         startButton.innerHTML = 'Start';
         if(buttons.children.length === 1){
-            buttonReset = document.createElement('button');
-            buttonReset.innerHTML = 'Reset';
-            buttonReset.className = 'buttonsForControl';
+            const buttonCreate = function (buttonName, buttonText) {
+                buttonName = document.createElement('button');
+                buttonName.innerHTML = buttonText;
+                buttonName.className = 'buttonsForControl';
+                buttons.append(buttonName);
+                buttonName.addEventListener('click', () => {
+                    console.log(1111);
+                })
+            }
 
-            buttonSave = document.createElement('button');
-            buttonSave.innerHTML = 'Save';
-            buttonSave.className = 'buttonsForControl';
+            buttonCreate(buttonReset, 'Reset');
+            buttonCreate(buttonSave, 'Save');
+            buttonCreate(buttonClear, 'Clear');
+            buttonCreate(buttonReverse, 'Reverse');
+            buttonCreate(buttonclearAll, 'clear All');
 
-            buttonClear = document.createElement('button');
-            buttonClear.innerHTML = 'Clear';
-            buttonClear.className = 'buttonsForControl';
-
-            buttonReverse = document.createElement('button');
-            buttonReverse.innerHTML = 'Reverse';
-            buttonReverse.className = 'buttonsForControl';
-
-            buttonclearAll = document.createElement('button');
-            buttonclearAll.innerHTML = 'Clear All';
-            buttonclearAll.className = 'buttonsForControl';
-
-            buttons.append(buttonReset);
-            buttons.append(buttonSave);
-            buttons.append(buttonClear);
-            buttons.append(buttonReverse);
-            buttons.append(buttonclearAll);
         }
 
         clearInterval(intervalId);
@@ -102,6 +93,3 @@ const startMilliseconds = () => {
     updateTimerDisplay();
 };
 
-buttonReset.onclick = () => {
-    console.log(123);
-}
